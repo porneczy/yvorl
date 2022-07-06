@@ -1,12 +1,9 @@
 import React from 'react'
-import { Parallax } from 'react-scroll-parallax';
 
 function Welcome() {
     return (
-        <div>
-            <Parallax speed={-5}>
-                <h1 className="slow">Yvorl Kft.</h1>
-            </Parallax>
+        <div className='welcome'>
+            <h1>Yvorl Kft.</h1>
         </div>
     )
 }

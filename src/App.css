@@ -38,3 +38,25 @@
     transform: rotate(360deg);
   }
 }
+
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  mix-blend-mode: difference;
+  color: rgb(255, 255, 255);
+
+  font-size: max(10vw, 50px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome {
+  height: 100vh;
+}
+
+.about {
+  height: 100vh;
+}
