@@ -22,11 +22,11 @@ function ParticlesBackGround() {
                 options={{
                     "fullScreen": {
                         "enable": true,
-                        "zIndex": 1
+                        "zIndex": 0
                     },
                     "particles": {
                         "number": {
-                            "value": 100,
+                            "value": 50,
                             "density": {
                                 "enable": true,
                                 "value_area": 800
