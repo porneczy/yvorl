@@ -6,10 +6,12 @@ import { BackSide } from 'three'
 import Overlay from './Overlay';
 
 useGLTF.preload('/3DLogo.gltf')
+const color = new THREE.Color()
 
 const Model = ({ caption, ...props }) => {
   const scroll = useScroll()
   const group = useRef()
+  const [hovered, set] = useState()
   const { scene, nodes, materials, animations } = useGLTF('/3DLogo.gltf')
   const { actions } = useAnimations(animations, scene)
   useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true)))
@@ -17,6 +19,7 @@ const Model = ({ caption, ...props }) => {
 
 
   useEffect(() => void (actions['Camera.001Action.005'].play().paused = true), [actions])
+
   useFrame((state, delta) => {
     const action = actions['Camera.001Action.005']
     const t = state.clock.getElapsedTime() / 2
@@ -24,12 +27,18 @@ const Model = ({ caption, ...props }) => {
     const offset = caption.current.innerText * 5
     /* console.log(t) */console.log(caption.current.outerText)
     action.time = THREE.MathUtils.damp(action.time, (action.getClip().duration / 2) * offset, 100, delta)
+
+
     state.camera.position.set(Math.sin(offset) * -10, Math.atan(offset * Math.PI * 2) * 5, Math.cos((offset * Math.PI) / 3) * -10)
     state.camera.lookAt(0, 0, 0)
 
-    /* group.current.rotation.y += 0.01; */
-    /* group.current.rotation.set(0.1 + Math.cos(t / 4.5) / 10, Math.sin(t / 4) / 4, 0.3 - (1 + Math.sin(t / 4)) / 8)
-    group.current.position.y = (1 + Math.sin(t / 2)) / 10 */
+
+
+
+
+
+
+
   })
 
   return (
@@ -76,7 +85,7 @@ function BigLogo({ scroll, caption }) {
   /* const scroll = useRef(0) */
   return (
     <>
-      <Canvas style={{ position: 'fixed' }} shadows camera={{ position: [0, 1.5, 14], fov: 50 }}>
+      <Canvas style={{ position: 'fixed' }} shadows >
         <fog attach="fog" args={['black', 0, 20]} />
         {/* <pointLight position={[0, 10, -10]} intensity={1} /> */}
         <Suspense fallback={
@@ -85,7 +94,7 @@ function BigLogo({ scroll, caption }) {
           </Html>
         }>
 
-          <Model caption={caption} scale={3.4} position={[0, -0.09, 0]} rotation-x={[Math.PI / 2]} rotation-y={[Math.PI / 2]} />
+          <Model caption={caption} scale={3.4} position={[0, 4, 5]} />
 
 
           {/* <Zoom /> */}
