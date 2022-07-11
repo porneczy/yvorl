@@ -5,53 +5,71 @@ const Overlay = forwardRef(({ caption, scroll }, ref) => (
         ref={ref}
         onScroll={(e) => {
             scroll.current = e.target.scrollTop / (e.target.scrollHeight - window.innerHeight)
-            caption.current.innerText = scroll.current.toFixed(2)
+            caption.current.innerText = scroll.current.toFixed(3)
         }}
         class="scroll">
         <div style={{ height: "400vh" }}>
             <div class="dot">
-                <h1>headset</h1>
-                Virtual reality (VR) is a simulated experience that can be similar to or completely different from the real world.
+                <h1>Yvorl Kft.</h1>
+
             </div>
         </div>
         <div style={{ height: "200vh" }}>
             <div class="dot">
-                <h1>headphone</h1>
-                Headphones are a pair of small loudspeaker drivers worn on or around the head over a user's ears.
+                <h1>Cégünkről</h1>
+                Magyar tulajdonban lévő YVORL Informatikai Tanácsadó és Szolgáltató Kft. 2017 óta a kis-, közép- és nagyvállalatok informatikai szakembereinek tanácsadója. Munkatársaink fiatal, lendületes csapata mérnöki, gazdasági és informatikai tudással és szakmai tapasztalattal is rendelkezik, így az informatikai szaktanácsadás és szolgáltatás minden területén számíthat cégünkre.
+
+                info@yvorl.hu
             </div>
         </div>
         <div style={{ height: "200vh" }}>
             <div class="dot">
-                <h1>rocket</h1>A rocket (from Italian: rocchetto, lit. 'bobbin/spool')[nb 1][1] is a projectile that spacecraft, aircraft or other
-                vehicle use to obtain thrust from a rocket engine.
+                <h1>Szoftverfejlesztés</h1>Cégünk alaptevékenysége informatikai rendszerek, egyedi szoftverek, adatbázisok tervezése és megvalósítása. Forduljon hozzánk bizalommal szoftverfejlesztési igényével, ötletével!
             </div>
         </div>
         <div style={{ height: "200vh" }}>
             <div class="dot">
-                <h1>turbine</h1>A turbine (/ˈtɜːrbaɪn/ or /ˈtɜːrbɪn/) (from the Greek τύρβη, tyrbē, or Latin turbo, meaning vortex)[1][2] is a
-                rotary mechanical device that extracts energy from a fluid flow and converts it into useful work.
+                <h1>Weboldal fejlesztés</h1>Cégünk jelentős szakmai tapasztalattal rendelkezik a webprogramozás területén. Vállaljuk webshopok, bemutatkozó oldalak, portálok tervezését, fejlesztését, valamint egyedi ötletek megvalósítását.
             </div>
         </div>
         <div style={{ height: "200vh" }}>
             <div class="dot">
-                <h1>table</h1>A table is an item of furniture with a flat top and one or more legs, used as a surface for working at, eating from or
-                on which to place things.[1][2]
+                <h1>Tanácsadás</h1>Felmérjük a vállalat igényeit, ennek megfelelően hozunk létre munkacsoportokat vagy készítünk tanulmányt, rendszertervet az Üzemeltetési, Biztonsági, Szoftverfejlesztési területeken. Igény szerint megtervezzük és megalkotjuk azokat az alkalmazásokat, amelyekkel a vállalkozás folyamatai standardizálhatók, optimalizálhatóak illetve automatizálhatók lesznek.
+
+                Minden esetben az üzleti döntéshozók elvárásainak megfelelő, hatékony használatot biztosító megoldásokat ajánlunk és szállítunk és az általunk tett javaslatokra, illetve megvalósításokra garanciát is vállalunk.
             </div>
         </div>
         <div style={{ height: "200vh" }}>
             <div class="dot">
-                <h1>laptop</h1>A laptop, laptop computer, or notebook computer is a small, portable personal computer (PC) with a screen and
-                alphanumeric keyboard.
+                <h1>Projektvezetés</h1>A projektmenedzsment szolgáltatás szigorú módszertani alapokon nyugvó tevékenység, ami lehetővé teszi a feladatok sikeres elvégzését. Az alkalmazott módszerek alapján a megfelelő projektszervezet felállítása, a feladatok előkészítése, a munkák levezénylése, a folyamatos kontrol gyakorlása tartozik a felelősségei közé. A projekt végrehajtása során alkalmazott kontrolling és jelentési rendszer lehetőséget biztosít a megrendelő részére az esetleges korrekciókra.
             </div>
         </div>
         <div style={{ height: "200vh" }}>
             <div class="dot">
-                <h1>zeppelin</h1>A Zeppelin is a type of rigid airship named after the German inventor Count Ferdinand von Zeppelin (German
-                pronunciation: [ˈt͡sɛpəliːn]) who pioneered rigid airship development at the beginning of the 20th century.
+                <h1>Rendszerintegráció</h1>A partnerünk informatikai alapinfrastruktúrájának tervezése, optimalizálása, illetve működésbeli támogatása. Mindez a hálózattervezéstől és annak kiépítéstől elindulva a munkaállomások különböző alkalmazásainak telepítésén, beállításán keresztül egészen a biztonságos internethasználat (tűzfalak és behatolásérzékelő-rendszerek) kialakításáig mindent magában foglalhat.
+            </div>
+        </div>
+        <div style={{ height: "200vh" }}>
+            <div class="dot">
+                <h1>Üzemeltetés és támogatás</h1>Kihelyezett rendszergazdai szolgáltatásokat nyújtunk valamint karbantartjuk a vállalat informatikai infrastruktúráját képező eszközöket, legyen az Windows, Linux vagy bármilyen UNIX alapú rendszer.
+
+                Szerverkarbantartás
+                Munkaállomások karbantartása
+                Biztonsági mentések, archiválás
+                Szerverek üzemeltetése
+                Adatbázis-rendszerek üzemeltetése
+            </div>
+        </div>
+        <div style={{ height: "200vh" }}>
+            <div class="dot">
+                <h1>Referenciák</h1>
+                TELEKOM Nyrt.
+                NRG Services Kft.
+                Fusiongate Kft.	DSG Services Kft
             </div>
         </div>
         <span class="caption" ref={caption}>
-            0.00
+            0.000
         </span>
     </div>
 ))

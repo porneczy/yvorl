@@ -21,7 +21,7 @@ const Model = ({ caption, ...props }) => {
     const action = actions['Camera.001Action.005']
     const t = state.clock.getElapsedTime() / 2
     /* const offset = 1 - scroll.offset */
-    const offset = caption.current.outerText * 5
+    const offset = caption.current.innerText * 5
     /* console.log(t) */console.log(caption.current.outerText)
     action.time = THREE.MathUtils.damp(action.time, (action.getClip().duration / 2) * offset, 100, delta)
     state.camera.position.set(Math.sin(offset) * -10, Math.atan(offset * Math.PI * 2) * 5, Math.cos((offset * Math.PI) / 3) * -10)
