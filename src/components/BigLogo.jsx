@@ -36,7 +36,7 @@ const Model = ({ caption, ...props }) => {
 
     console.log(cameras[0].position.x)
 
-    state.camera.position.set(cameras[0].position.x * offset, cameras[0].position.y * offset * Math.sin((t) / 30) * 2, cameras[0].position.z * offset)
+    state.camera.position.set(cameras[0].position.x * offset, cameras[0].position.y * offset * Math.sin((t) / 7) * 2, cameras[0].position.z * offset)
 
 
     /* cameras[0].position.y = Math.sin((t) / 30) */
