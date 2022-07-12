@@ -1,7 +1,8 @@
 import * as THREE from 'three'
-import React, { Suspense, useRef, useLayoutEffect, useEffect, useState } from 'react'
+import { Scene, Matrix4 } from 'three'
+import React, { Suspense, useRef, useMemo, useLayoutEffect, useEffect, useState } from 'react'
 import { useFrame, Canvas } from '@react-three/fiber'
-import { Html, ContactShadows, useGLTF, ScrollControls, useScroll, useAnimations } from "@react-three/drei"
+import { Html, ContactShadows, useGLTF, PerspectiveCamera, OrbitControls, useScroll, useAnimations, useCamera } from "@react-three/drei"
 import { BackSide } from 'three'
 import Overlay from './Overlay';
 
@@ -11,39 +12,46 @@ const color = new THREE.Color()
 const Model = ({ caption, ...props }) => {
   const scroll = useScroll()
   const group = useRef()
+
   const [hovered, set] = useState()
-  const { scene, nodes, materials, animations } = useGLTF('/3DLogo.gltf')
+  const { scene, nodes, materials, animations, cameras } = useGLTF('/3DLogo.gltf')
   const { actions } = useAnimations(animations, scene)
+
+
   useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true)))
 
-
-
   useEffect(() => void (actions['Camera.001Action.005'].play().paused = true), [actions])
+
+
 
   useFrame((state, delta) => {
     const action = actions['Camera.001Action.005']
     const t = state.clock.getElapsedTime() / 2
     /* const offset = 1 - scroll.offset */
     const offset = caption.current.innerText * 5
-    /* console.log(t) */console.log(caption.current.outerText)
-    action.time = THREE.MathUtils.damp(action.time, (action.getClip().duration / 2) * offset, 100, delta)
+    console.log(actions)
+    /* console.log(t) *//* console.log(caption.current.outerText) */
+    action.time = THREE.MathUtils.damp(action.time, (action.getClip().duration / 2) * offset / 2.5, 100, delta)
 
 
-    state.camera.position.set(Math.sin(offset) * -10, Math.atan(offset * Math.PI * 2) * 5, Math.cos((offset * Math.PI) / 3) * -10)
-    state.camera.lookAt(0, 0, 0)
+    console.log(cameras[0].position.x)
+
+    state.camera.position.set(cameras[0].position.x * offset, cameras[0].position.y * offset * Math.sin((t) / 30) * 2, cameras[0].position.z * offset)
 
 
-
-
-
-
-
-
+    /* cameras[0].position.y = Math.sin((t) / 30) */
+    /* cameras[0].rotation.x = Math.sin((t + offset * 2000) / 40) / 10
+    cameras[0].rotation.y = Math.cos((t + offset * 2000) / 30) / 10
+    cameras[0].rotation.z = Math.sin((t + offset * 2000) / 40) / 10 */
   })
 
   return (
     <>
-      <primitive object={scene} {...props} />
+      <primitive object={scene}  {...props} />
+      <group name="Camera">
+        <PerspectiveCamera makeDefault far={100} near={0.5} fov={54} />
+
+      </group>
       <Lights />
 
     </>
@@ -97,7 +105,7 @@ function BigLogo({ scroll, caption }) {
           <Model caption={caption} scale={3.4} position={[0, 4, 5]} />
 
 
-          {/* <Zoom /> */}
+          <Zoom />
           <ContactShadows frames={1} rotation-x={[Math.PI / 2]} position={[0, -0.33, 0]} far={0.4} width={2} height={2} blur={4} />
         </Suspense>
       </Canvas >
