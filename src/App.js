@@ -13,7 +13,7 @@ function App() {
   return (
       <div className="App">
         <BigLogo scroll={scroll} caption={caption} />
-         <Overlay ref={overlay} caption={caption} scroll={scroll} />
+        <Overlay ref={overlay} caption={caption} scroll={scroll} />
           
         <ParticlesBackGround /> 
         {/* <ParallaxContents /> */}
