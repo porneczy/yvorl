@@ -13,6 +13,15 @@ const Model = ({ caption, ...props }) => {
   const group = useRef()
   const { scene, nodes, materials, animations, cameras } = useGLTF('/3DLogo2.gltf')
   const { actions } = useAnimations(animations, scene)
+
+
+
+
+
+
+
+
+
   /*  useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true))) */
 
   useEffect(() => void (actions['Camera.001Action'].play().paused = true), [actions])
@@ -51,9 +60,10 @@ const Model = ({ caption, ...props }) => {
         color={"#101010"}
 
       /> */}
-      <pointLight args={[`white`, 10]} position={[6, 5, 6]} />
-      <pointLight args={[`red`, 0.5]} position={[-5, -4, 13]} />
-      <pointLight args={[`blue`, 4]} position={[0, 13, 3]} />
+      {/* <pointLight args={[`#202020`, 10]} position={[6, 5, 6]} /> */}
+      <pointLight args={[`#212529`, 0.5]} position={[6, 5, 6]} />
+      <pointLight args={[`#6c757d`, 0.15]} position={[-5, -4, 13]} />
+      <pointLight args={[`#e9ecef`, 0.14]} position={[0, 13, 3]} />
       <primitive object={scene}  {...props} />
 
     </>
