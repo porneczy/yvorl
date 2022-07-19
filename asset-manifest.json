@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/yvorl/static/css/main.7fdd2720.css",
+    "main.js": "/yvorl/static/js/main.385a5925.js",
+    "static/js/787.aa222076.chunk.js": "/yvorl/static/js/787.aa222076.chunk.js",
+    "index.html": "/yvorl/index.html",
+    "main.7fdd2720.css.map": "/yvorl/static/css/main.7fdd2720.css.map",
+    "main.385a5925.js.map": "/yvorl/static/js/main.385a5925.js.map",
+    "787.aa222076.chunk.js.map": "/yvorl/static/js/787.aa222076.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7fdd2720.css",
+    "static/js/main.385a5925.js"
+  ]
+}
