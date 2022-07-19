@@ -2,7 +2,9 @@ import * as THREE from 'three'
 import { Scene, Matrix4 } from 'three'
 import React, { Suspense, useRef, useMemo, useLayoutEffect, useEffect, useState } from 'react'
 import { useFrame, Canvas } from '@react-three/fiber'
-import { Html, ContactShadows, useGLTF, PerspectiveCamera, OrbitControls, useScroll, useAnimations, useCamera } from "@react-three/drei"
+import { Html, ContactShadows, useGLTF, PerspectiveCamera, useTexture, useScroll, useAnimations, Reflector } from "@react-three/drei"
+import { EffectComposer, Bloom } from '@react-three/postprocessing'
+import { KernelSize } from 'postprocessing'
 import { BackSide } from 'three'
 import Overlay from './Overlay';
 
@@ -13,13 +15,6 @@ const Model = ({ caption, ...props }) => {
   const group = useRef()
   const { scene, nodes, materials, animations, cameras } = useGLTF('/3DLogo2.gltf')
   const { actions } = useAnimations(animations, scene)
-
-
-
-
-
-
-
 
 
   /*  useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true))) */
@@ -51,19 +46,20 @@ const Model = ({ caption, ...props }) => {
         color="blue"
       />
 
-      <spotLight castShadow penumbra={0.75} angle={Math.PI / 4} position={[0, 0, 8]} distance={2} intensity={105} shadow-mapSize={[2048, 2048]} /> */}
+    <spotLight castShadow penumbra={0.75} angle={Math.PI / 4} position={[0, 0, 8]} distance={2} intensity={105} shadow-mapSize={[2048, 2048]} /> */}
 
       {/* <directionalLight
 
-        intensity={10}
-        position={[0, 2, 2]}
-        color={"#101010"}
+        intensity={1000}
+        position={[100, 20, 20]}
+        color={"baa898"}
 
-      /> */}
-      {/* <pointLight args={[`#202020`, 10]} position={[6, 5, 6]} /> */}
-      <pointLight args={[`#212529`, 0.5]} position={[6, 5, 6]} />
-      <pointLight args={[`#6c757d`, 0.15]} position={[-5, -4, 13]} />
-      <pointLight args={[`#e9ecef`, 0.14]} position={[0, 13, 3]} />
+      />
+       */}
+      {/* <pointLight args={[`white`, 1.5]} position={[-6, 5, 6]} /> */}
+
+      <pointLight args={[`#baa898`, 160.15]} position={[-5, 0, 13]} />
+      <pointLight args={[`#baa898`, 160.14]} position={[0, 0, 3]} />
       <primitive object={scene}  {...props} />
 
     </>
@@ -82,8 +78,9 @@ function BigLogo({ scroll, caption }) {
       <Canvas style={{ position: 'fixed' }}  >
 
         {/*  <fog attach="fog" args={['black', 0, 20]} /> */}
-        <pointLight position={[0, 10, -10]} intensity={1} />
+        {/* <pointLight position={[0, 10, -10]} intensity={1} /> */}
 
+        {/* <ambientLight intensity={0.3} /> */}
 
         <Suspense fallback={
           <Html center className="loader">
@@ -94,6 +91,12 @@ function BigLogo({ scroll, caption }) {
 
           <Model caption={caption} />
 
+
+
+          {/* <EffectComposer multisampling={8}>
+            <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
+            <Bloom kernelSize={KernelSize.HUGE} luminanceThreshold={0} luminanceSmoothing={0} intensity={0.6} />
+          </EffectComposer> */}
 
         </Suspense>
       </Canvas >
